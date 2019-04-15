@@ -1,6 +1,6 @@
 # Project-Group-4
 
-TITLE : Customer review with the help of Facial expression recognition(FER)
+TITLE : Customer review with the help of Facial expression recognition(FER).
  
 ABSTRACT : People are always more likely to buy the product which has already been recommended by other users. This is how important are customer reviews. But no customer likes filling those lengthy questionnaires that most companies offer. Also, filling these questionnaires is time consuming. Taking customer review by FER system is easier and quicker.
 
@@ -8,3 +8,4 @@ SUMMARY :  This project uses a Convolutional Neural Network model to design a Fa
 
 REFERENCES:
 http://cs231n.stanford.edu/reports/2017/pdfs/224.pdf, http://cs231n.stanford.edu/reports/2016/pdfs/023_Report.pdf , https://www.tensorflow.org/tutorials/estimators/cnn , https://keras.io/getting-started/sequential-model-guide/
+ 
