@@ -1,10 +1,7 @@
 function triggerCamera(){
-	alert("hi")
- var reviewScreenDiv = document.getElementById("ReviewScreen");
  var cameraAccessDiv = document.getElementById("CameraAccess");
- if(cameraAccessDiv && reviewScreenDiv){
+ if(cameraAccessDiv){
  	cameraAccessDiv.style = "visibility:visible";
- 	reviewScreenDiv.style = "visibility:hidden";
  	cameraTrigger();
  }
 }
@@ -22,9 +19,9 @@ function cameraTrigger(){
 }
 
 function streamWebCam (stream) {
-	//video.src = window.URL.createObjectURL(stream);
 	video.srcObject = stream;
 	video.play();
+	setTimeout(function(){ snap();}, 3000);
 }
 
 function throwError(e){
@@ -32,10 +29,10 @@ function throwError(e){
 }
 
 function snap() {
+	var video = document.getElementById('video');
 	canvas.width = video.clientWidth;
 	canvas.height = video.clientHeight;
 	var context = canvas.getContext('2d');
-
 	context.drawImage(video, 0, 0);
-
+	video.style = "display:none";
 }
