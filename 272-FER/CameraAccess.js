@@ -79,7 +79,7 @@ function imageUpload(canvas) {
       
       $.ajax({
         method: 'POST',
-        url: 'https://vision.googleapis.com/v1/images:annotate?key=AIzaSyBsiG1WCYi8thWKkmL4Li1LmuDXqK4eezY',
+        url: 'https://vision.googleapis.com/v1/images:annotate?key=',
         contentType: 'application/json',
         data: JSON.stringify(request),
         processData: false,
