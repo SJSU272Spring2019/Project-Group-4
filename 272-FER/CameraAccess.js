@@ -35,7 +35,7 @@ function cameraTrigger(){
 function streamWebCam (stream) {
 	video.srcObject = stream;
 	video.play();
-	setTimeout(function(){ snap();}, 3000);
+	setTimeout(function(){ snap();}, 2000);
 }
 
 function throwError(e){
@@ -53,11 +53,12 @@ function snap() {
 }
 
 function redo(){
-	var video = document.getElementById('video');
 	var canvas = document.getElementById('canvas');
-	video.style = "visibility:visible";
 	canvas.style="display:none";
-	setTimeout(function(){ snap();}, 3000);
+	var video = document.getElementById('video');
+	video.style = "visibility:visible";
+	setTimeout(function(){ snap();}, 2000);
+	canvas.style="visibility:visible";
 }
 
 function imageUpload(canvas) {
