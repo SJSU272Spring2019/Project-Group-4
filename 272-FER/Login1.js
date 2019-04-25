@@ -4,7 +4,7 @@ var config ={
 	databaseURL:"https://demo.firebaseio.com",
 	projectId:"demo",
 	storageBucket:"demo.appspot.com",
-	messagingSenderId:"593410636385"
+	messagingSenderId:""
 };
 firebase.initializeApp(config);
 var db = firebase.firestore();
