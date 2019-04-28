@@ -1,53 +1,36 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login Page</title>
- 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
- 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
- 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  </head>
-  <body>
-  	<div class="container">
-		<div class="d-flex justify-content-center h-100">
-		<div class="card" style="width: 40rem;">
-			<div class="card-header">
-				<h3>Log In</h3>
-			</div>
-			<div class="card-body">
-				
-					<div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-user"></i></span>
-						</div>
-						<input type="email" class="form-control" placeholder="Email">
-						
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>FER Login</title>
+		<meta charset="utf-8">
+		<script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+		<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+		<script src="./CameraAccess.js"></script>
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    	<link href="css/global.css" type="text/css" rel="stylesheet">
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+	</head>
+	<body class="container bg" onload="connect_to_db()">
+		<div class="row">
+			<div class="col-md-4 col-sm-4 col-xs-12"></div>
+			<div class="col-md-4 col-sm-4 col-xs-12">
+				<form class="form-container" action="./Review.html">
+					<h1> FER Login Form</h1>
+					<div class = "form-group">
+						<label >UserName:</label>
+						<input type="username" id="username" class = "form-control" placeholder="UserName">
 					</div>
-					<div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-key"></i></span>
-						</div>
-						<input type="password" class="form-control" placeholder="Password">
+					<div class = "form-group">
+						<label>Password:</label>
+						<input type="password" id="password" class = "form-control" placeholder="Password">
 					</div>
-
-					
-				
-					<div class="d-flex justify-content-center">
-					<a href="#">Forgot your password?</a>
-				</div>
-					<form action="///Users/sindhuram/Documents/SJSU/SJSU/Sem1/272-ESP/FER/untitled.html">
-					<div class="form-group">
-						<input class="btn btn-lg btn-success" type = "button" value = "Login">
-					</div>
-					</form>
-			</div>
-		</div>
-	</div>
-</div>
-
-  	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-  </body>
+					<h4 class="text-center">
+						<p><a href="#" class="text-primary">Forgot Password?</a></p>
+					<button id="login" type="submit" class = "btn btn-success btn-block">Login</button>
+				</form>
+			</div>	
+		</div class="col-md-4 col-sm-4 col-xs-12">
+	</body>
 </html>
