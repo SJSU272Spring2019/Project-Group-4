@@ -1,22 +1,18 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>FER Login</title>
-	<meta charset="utf-8">
-	 <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-firestore.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
-<script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
-<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-    <link href="css/global.css" type="text/css" rel="stylesheet">
-
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-
-</head>
-<body class="container bg">
+	<head>
+		<title>FER Login</title>
+		<meta charset="utf-8">
+		<script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+		<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+		<script src="./CameraAccess.js"></script>
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    	<link href="css/global.css" type="text/css" rel="stylesheet">
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+	</head>
+	<body class="container bg">
 		<div class="row">
 			<div class="col-md-4 col-sm-4 col-xs-12"></div>
 			<div class="col-md-4 col-sm-4 col-xs-12">
@@ -24,7 +20,7 @@
 					<h1> FER Login Form</h1>
 					<div class = "form-group">
 						<label >UserName:</label>
-						<input type="userName" id="userName" class = "form-control" placeholder="UserName">
+						<input type="username" id="username" class = "form-control" placeholder="UserName">
 					</div>
 					<div class = "form-group">
 						<label>Password:</label>
@@ -32,13 +28,9 @@
 					</div>
 					<h4 class="text-center">
 						<p><a href="#" class="text-primary">Forgot Password?</a></p>
-					<button id="login" type="submit" onClick="check();"class = "btn btn-success btn-block">Login</button>
-
+					<button id="login" type="submit" onclick="add_user_to_db()" class = "btn btn-success btn-block">Login</button>
 				</form>
-			</div>
-			
+			</div>	
 		</div class="col-md-4 col-sm-4 col-xs-12">
-		<script src ="./Login1.js"></script>
-
-</body>
+	</body>
 </html>

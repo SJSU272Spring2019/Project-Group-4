@@ -1,3 +1,58 @@
+
+var config;
+var database;
+var fData;
+
+function connect_to_db() {
+  config = {
+      apiKey: "",
+      authDomain: "fer272-237805.firebaseapp.com",
+      databaseURL: "https://fer272-237805.firebaseio.com",
+      projectId: "fer272-237805",
+      storageBucket: "fer272-237805.appspot.com",
+      messagingSenderId: "981629924823"
+    };
+  
+  firebase.initializeApp(config);
+  console.log(firebase);
+  database = firebase.firestore();  
+};
+
+function add_user_to_db() {
+  connect_to_db();
+  var username = document.getElementById("username").value;
+  var password = document.getElementById("password").value;
+  var db_input = {};
+  db_input['username'] = String(username);
+  db_input['password'] = String(password);
+
+  database.collection("user_login_details").doc("logins").add(db_input)
+  .then(function(docRef) {
+      console.log("Document written with ID: ", docRef.id);
+  })
+  .catch(function(error) {
+      console.error("Error adding document: ", error);
+  });
+}
+
+function add_review_to_db(joy, sorrow, anger, surprise) {
+  connect_to_db();
+  var db_input = {};
+  db_input['joy'] = joy;
+  db_input['sorrow'] = sorrow;
+  db_input['anger'] = anger;
+  db_input['surprise'] = surprise;
+  window.alert(db_input);
+  
+  database.collection("user_login_details").add(db_input)
+  .then(function(docRef) {
+      console.log("Document written with ID: ", docRef.id);
+  })
+  .catch(function(error) {
+      console.error("Error adding document: ", error);
+  });
+}
+
 function triggerCamera(){
  var cameraAccessDiv = document.getElementById("CameraAccess");
  if(cameraAccessDiv){
@@ -50,6 +105,8 @@ function snap() {
 	context.drawImage(video, 0, 0);
 	video.style = "display:none";
 	imageUpload(canvas)
+
+
 }
 
 function redo(){
@@ -91,13 +148,11 @@ function imageUpload(canvas) {
           console.log('sorrow: ' + faceData.sorrowLikelihood);
           console.log('anger: ' + faceData.angerLikelihood);
           console.log('surprise: ' + faceData.surpriseLikelihood);
+          add_review_to_db(faceData.joyLikelihood, faceData.sorrowLikelihood, faceData.angerLikelihood, faceData.surpriseLikelihood);
         },
         error: function (data, textStatus, errorThrown) {
           console.log('error: ' + data);
         }
       })
-    })
+    }) 
 }
-
-
-
