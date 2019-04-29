@@ -6,35 +6,17 @@ var fData;
 function connect_to_db() {
   config = {
       apiKey: "",
-      authDomain: "fer272-237805.firebaseapp.com",
-      databaseURL: "https://fer272-237805.firebaseio.com",
-      projectId: "fer272-237805",
-      storageBucket: "fer272-237805.appspot.com",
-      messagingSenderId: "981629924823"
+      authDomain: "expression-db.firebaseapp.com",
+      databaseURL: "https://expression-db.firebaseio.com",
+      projectId: "expression-db",
+      storageBucket: "expression-db.appspot.com",
+      messagingSenderId: ""
     };
   
   firebase.initializeApp(config);
   console.log(firebase);
   database = firebase.firestore();  
 };
-
-function add_user_to_db() {
-  connect_to_db();
-  var username = document.getElementById("username").value;
-  var password = document.getElementById("password").value;
-  var db_input = {};
-  db_input['username'] = String(username);
-  db_input['password'] = String(password);
-
-  database.collection("user_login_details").doc("logins").add(db_input)
-  .then(function(docRef) {
-      console.log("Document written with ID: ", docRef.id);
-  })
-  .catch(function(error) {
-      console.error("Error adding document: ", error);
-  });
-}
-
 function add_review_to_db(joy, sorrow, anger, surprise) {
   connect_to_db();
   var db_input = {};
@@ -44,7 +26,7 @@ function add_review_to_db(joy, sorrow, anger, surprise) {
   db_input['surprise'] = surprise;
   window.alert(db_input);
   
-  database.collection("user_login_details").add(db_input)
+  database.collection("Expressions").add(db_input)
   .then(function(docRef) {
       console.log("Document written with ID: ", docRef.id);
   })
