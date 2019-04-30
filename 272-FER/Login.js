@@ -3,12 +3,12 @@ var config;
 var database;
 var fData;
 var config = {
-    apiKey: "AIzaSyBgY7NL2NMDqLymige7uk9IlXF6H7DSR0k",
+    apiKey: "",
     authDomain: "auth-db-9a87f.firebaseapp.com",
     databaseURL: "https://auth-db-9a87f.firebaseio.com",
     projectId: "auth-db-9a87f",
     storageBucket: "auth-db-9a87f.appspot.com",
-    messagingSenderId: "8782950684"
+    messagingSenderId: ""
   };
   firebase.initializeApp(config);
   console.log(firebase);

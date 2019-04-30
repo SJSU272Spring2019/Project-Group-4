@@ -4,12 +4,12 @@ var database;
 var fData;
 var feedback;
 config = {
-    apiKey: "AIzaSyDDL5kjqDbiVqBaAxSzJ7lk2scdpf82wrM",
+    apiKey: "",
     authDomain: "expression-db.firebaseapp.com",
     databaseURL: "https://expression-db.firebaseio.com",
     projectId: "expression-db",
     storageBucket: "expression-db.appspot.com",
-    messagingSenderId: "587015352878"
+    messagingSenderId: ""
   };
 
 firebase.initializeApp(config);
@@ -139,7 +139,7 @@ function imageUpload(canvas) {
       
       $.ajax({
         method: 'POST',
-        url: 'https://vision.googleapis.com/v1/images:annotate?key=AIzaSyD3SbHZrtdCcsrv1s447vjmkRvm4CwmXZU',
+        url: 'https://vision.googleapis.com/v1/images:annotate?key=',
         contentType: 'application/json',
         data: JSON.stringify(request),
         processData: false,
