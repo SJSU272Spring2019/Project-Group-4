@@ -2,37 +2,57 @@
 var config;
 var database;
 var fData;
+var feedback;
+config = {
+    apiKey: "AIzaSyDDL5kjqDbiVqBaAxSzJ7lk2scdpf82wrM",
+    authDomain: "expression-db.firebaseapp.com",
+    databaseURL: "https://expression-db.firebaseio.com",
+    projectId: "expression-db",
+    storageBucket: "expression-db.appspot.com",
+    messagingSenderId: "587015352878"
+  };
 
-function connect_to_db() {
-  config = {
-      apiKey: "",
-      authDomain: "expression-db.firebaseapp.com",
-      databaseURL: "https://expression-db.firebaseio.com",
-      projectId: "expression-db",
-      storageBucket: "expression-db.appspot.com",
-      messagingSenderId: ""
-    };
-  
-  firebase.initializeApp(config);
-  console.log(firebase);
-  database = firebase.firestore();  
-};
-function add_review_to_db(joy, sorrow, anger, surprise) {
-  connect_to_db();
-  var db_input = {};
-  db_input['joy'] = joy;
-  db_input['sorrow'] = sorrow;
-  db_input['anger'] = anger;
-  db_input['surprise'] = surprise;
-  window.alert(db_input);
-  
-  database.collection("Expressions").add(db_input)
-  .then(function(docRef) {
-      console.log("Document written with ID: ", docRef.id);
-  })
-  .catch(function(error) {
-      console.error("Error adding document: ", error);
-  });
+firebase.initializeApp(config);
+console.log(firebase);
+database = firebase.firestore(); 
+
+function add_review_to_db() {
+  var joy = feedback["joy"];
+  var sorrow = feedback["sorrow"];
+  var anger = feedback["anger"];
+  var surprise = feedback["surprise"];
+  var unlikely = false;
+  var veryunlikely = false;
+  for(val in feedback){
+    if (feedback[val] == "VERY_UNLIKELY"){
+      veryunlikely = true;
+    } else {
+      veryunlikely = false;
+      break;
+    }
+  }
+
+  for(val in feedback){
+    if (feedback[val] == "UNLIKELY"){
+      unlikely = true;
+    } else {
+      unlikely = false;
+      break;
+    }
+  }
+
+  if(veryunlikely || unlikely){
+    window.location.assign("./ResultFailure.html");
+  } else{
+    database.collection("Expressions").add(feedback)
+    .then(function(docRef) {
+        console.log("Document written with ID: ", docRef.id);
+        window.location.assign("./ResultSuccess.html");
+    })
+    .catch(function(error) {
+        console.error("Error adding document: ", error);
+    });  
+  }
 }
 
 function triggerCamera(){
@@ -119,7 +139,7 @@ function imageUpload(canvas) {
       
       $.ajax({
         method: 'POST',
-        url: 'https://vision.googleapis.com/v1/images:annotate?key=',
+        url: 'https://vision.googleapis.com/v1/images:annotate?key=AIzaSyD3SbHZrtdCcsrv1s447vjmkRvm4CwmXZU',
         contentType: 'application/json',
         data: JSON.stringify(request),
         processData: false,
@@ -130,7 +150,13 @@ function imageUpload(canvas) {
           console.log('sorrow: ' + faceData.sorrowLikelihood);
           console.log('anger: ' + faceData.angerLikelihood);
           console.log('surprise: ' + faceData.surpriseLikelihood);
-          add_review_to_db(faceData.joyLikelihood, faceData.sorrowLikelihood, faceData.angerLikelihood, faceData.surpriseLikelihood);
+          feedback = {
+            "joy":faceData.joyLikelihood,
+            "sorrow" : faceData.sorrowLikelihood,
+            "anger" : faceData.angerLikelihood,
+            "surprise" : faceData.surpriseLikelihood
+          };
+          //add_review_to_db(faceData.joyLikelihood, faceData.sorrowLikelihood, faceData.angerLikelihood, faceData.surpriseLikelihood);
         },
         error: function (data, textStatus, errorThrown) {
           console.log('error: ' + data);
