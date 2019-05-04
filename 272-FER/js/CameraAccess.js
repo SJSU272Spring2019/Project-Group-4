@@ -8,7 +8,13 @@ var finalTrans='';
 
 
 config = {
-   
+    apiKey: "AIzaSyDDL5kjqDbiVqBaAxSzJ7lk2scdpf82wrM",
+    authDomain: "expression-db.firebaseapp.com",
+    databaseURL: "https://expression-db.firebaseio.com",
+    projectId: "expression-db",
+    storageBucket: "expression-db.appspot.com",
+    messagingSenderId: "587015352878"
+
   };
 
   firebase.initializeApp(config);
