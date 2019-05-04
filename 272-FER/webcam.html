@@ -3,7 +3,7 @@
   <head>
     <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
-    <script src ="./CameraAccess.js"></script>
+    <script src ="js/CameraAccess.js"></script>
     <meta charset="utf-8">
     <link href="css/global.css" type="text/css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,13 +13,20 @@
      <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 
   </head>
-  <body onload="triggerCamera();" class="container bg">
-    <div class="container cam">
-    <div id ="CameraAccess">
-        <video id="video" width="1200" height="800"></video>
-        <canvas id="canvas" width="200" height="200"></canvas>
-        <input class= "btn btn-xlg btn-success" type = "submit" value = "Submit Feedback" onclick="add_review_to_db();">
-        <input class= "btn btn-xlg btn-primary" type = "submit" value = "Redo" onclick= "redo();">
+  <body>
+    <div class="container bg">
+        <!-- class="container cam"  -->
+        <form  onsubmit="return false;" style="color:white">
+            Enter bill number<br><input id="userbill" type="text" style="color:black"/>
+            <input id="bill" type="submit" style="color:black" onclick="triggerCamera();"/>
+        </form>
+      <!-- <h4>Did you like the service?</h4> -->
+    <!-- onload="triggerCamera();" class="container bg"> -->
+      <div id ="CameraAccess">
+          <video id="video" width="1200" height="500"></video>
+          <canvas id="canvas" width="200" height="100"></canvas>
+          <input class= "btn btn-xlg btn-success" type = "submit" value = "Submit Feedback" onclick="add_exp_to_db();">
+          <input class= "btn btn-xlg btn-primary" type = "submit" value = "Redo" onclick= "redo();">
       </div>
     </div>
   </body>
