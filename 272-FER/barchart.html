@@ -1,0 +1,99 @@
+<html>
+<head>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+    <script>
+        var database;
+        function configuredb(){
+            var firebaseConfig = {
+                apiKey: "",
+                authDomain: "",
+                databaseURL: "",
+                projectId: "",
+                storageBucket: "",
+                messagingSenderId: "",
+                appId: ""
+              };
+            firebase.initializeApp(firebaseConfig);
+            console.log(firebase);
+            database = firebase.firestore();
+        };
+        configuredb();
+    </script>
+    <!--<script type="text/javascript" src="./add_values_to_db.js"></script>-->
+    
+</head>
+<body>
+    <div style="display: block;height: 500px;width: 500px;margin:auto;margin-top:100px">
+        <canvas id="barChart" width="500" height="500" ></canvas>
+    </div>
+    <script>
+        
+        function getValuesFromdb(){
+            var feedbackNum ={
+                'joy':0,
+                'sorrow':0,
+                'anger':0,
+                'surprise':0
+            };
+            database.collection("Expressions").get().then(function(alldocs){
+                alldocs.forEach(function(doc){
+                     var feedback = doc.data();
+                     for(var param in feedback){
+                        if (feedback[param] == "LIKELY" || feedback[param] == "VERY_LIKELY" ){
+                            feedbackNum[param] += 1;
+                            break;
+                        }
+                     }
+                });
+                generateGraph(feedbackNum);
+            }).catch(function(error){
+                console.log("Error getting document:", error);
+            });
+        };
+        
+        function generateGraph(expressionValues){
+            var ctx = document.getElementById('barChart');
+           // configuredb();
+           // var expressionValues = getValuesFromdb();
+           Chart.defaults.global.defaultFontColor = 'black';
+            console.log("expressionValues..."+JSON.stringify(expressionValues));
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Joy', 'Sorrow', 'Anger', 'Surprise'],
+                    datasets: [{
+                        label: 'customer reviews',
+                        data: [parseInt(expressionValues.joy), parseInt(expressionValues.sorrow), parseInt(expressionValues.anger), parseInt(expressionValues.surprise)],
+                       //data:[12,12,8,10],
+                        backgroundColor: [
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)'
+                            
+                        ],
+                        borderColor: [
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+        getValuesFromdb();
+</script>
+</body>
+</html>
