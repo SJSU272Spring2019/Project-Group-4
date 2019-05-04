@@ -1,59 +1,68 @@
 
 var config;
 var database;
-var fData;
+var billnum;
 var feedback;
+var fData;
+var finalTrans='';
+
+
 config = {
-    apiKey: "",
-    authDomain: "expression-db.firebaseapp.com",
-    databaseURL: "https://expression-db.firebaseio.com",
-    projectId: "expression-db",
-    storageBucket: "expression-db.appspot.com",
-    messagingSenderId: ""
+   
   };
 
-firebase.initializeApp(config);
-console.log(firebase);
-database = firebase.firestore(); 
+  firebase.initializeApp(config);
+  console.log(firebase);
+  database = firebase.firestore(); 
 
-function add_review_to_db() {
-  var joy = feedback["joy"];
-  var sorrow = feedback["sorrow"];
-  var anger = feedback["anger"];
-  var surprise = feedback["surprise"];
-  var unlikely = false;
-  var veryunlikely = false;
-  for(val in feedback){
-    if (feedback[val] == "VERY_UNLIKELY"){
-      veryunlikely = true;
-    } else {
-      veryunlikely = false;
-      break;
-    }
-  }
 
-  for(val in feedback){
-    if (feedback[val] == "UNLIKELY"){
-      unlikely = true;
-    } else {
-      unlikely = false;
-      break;
-    }
-  }
+function add_exp_to_db() {
+    
+    billnum = document.getElementById("userbill").value;
+    
 
-  if(veryunlikely || unlikely){
-    window.location.assign("./ResultFailure.html");
-  } else{
-    database.collection("Expressions").add(feedback)
-    .then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
-        window.location.assign("./ResultSuccess.html");
-    })
+    database.collection("Feedback").doc(billnum).set({
+      expressions: feedback
+  })
+    .then(function() {
+    // console.log("doc succussfully written");
+    billnum = document.getElementById("userbill").value;
+    window.location.assign("ResultSuccess.html?bill_num=" + billnum);
+  })
     .catch(function(error) {
         console.error("Error adding document: ", error);
     });  
+   
+
   }
+
+
+function sendToSpeech() {
+  billnum = document.getElementById("billNum").value;
+  console.log('bill ' + billnum);
+  window.location.assign("speechTotext.html?bill_num=" + billnum);
 }
+  
+function sendTodb(){
+    var urlParams = new URLSearchParams(location.search);
+    billnum = urlParams.get('bill_num');
+    console.log(urlParams.get('bill_num'));
+    var bill=billnum;
+    console.log(billnum);
+    var res= document.getElementById("result");
+    var val = res.innerText;
+    
+        database.collection('Feedback').doc(bill).set({
+             text: val
+        }, { merge: true })
+         .then(function() {
+          window.location.assign("ResultFailure.html");
+         })
+         .catch(function(error) {
+             console.error("Error writing document: ", error);
+         });
+}
+
 
 function triggerCamera(){
  var cameraAccessDiv = document.getElementById("CameraAccess");
@@ -120,6 +129,38 @@ function redo(){
 	canvas.style="visibility:visible";
 }
 
+function speechTotext(){   
+  if('webkitSpeechRecognition'in window){
+      var speech =new webkitSpeechRecognition();
+      speech.continuous= true;
+      speech.interimResults= true;
+      speech.lang="en-IN";
+      speech.start();
+      speech.onresult= function(event){
+          
+          var interimTrans='';
+          for(var i=event.resultIndex; i<event.results.length; i++){
+              var transcript= event.results[i][0].transcript;
+              transcript.replace("\n", "<br>");
+              if(event.results[i].isFinal){
+                  finalTrans += transcript;
+              }
+              else{
+                  interimTrans += transcript;
+              }
+          }
+          r.innerHTML= finalTrans + '<span style="color:#999">' + interimTrans + '</span>';
+      };
+      speech.onerror= function(event){
+
+      };
+  }
+  else{
+      r.innerHTML=" Browser not supported";
+  }
+ 
+}
+
 function imageUpload(canvas) {
     canvasToBase64(canvas, function(b64) {
       b64 = b64.replace('data:image/jpeg;base64,', ''); // remove content type
@@ -139,7 +180,7 @@ function imageUpload(canvas) {
       
       $.ajax({
         method: 'POST',
-        url: 'https://vision.googleapis.com/v1/images:annotate?key=',
+        url: 'https://vision.googleapis.com/v1/images:annotate?key=AIzaSyD3SbHZrtdCcsrv1s447vjmkRvm4CwmXZU',
         contentType: 'application/json',
         data: JSON.stringify(request),
         processData: false,
