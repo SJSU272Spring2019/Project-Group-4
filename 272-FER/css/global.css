@@ -1,6 +1,5 @@
 
-.bg{background: url('../images/2.jpeg') no-repeat;   background-size: cover;   width: 2000px;
-  height: 975px;}
+.bg{background: url('../images/2.jpeg') no-repeat;   background-size: cover;   width: 100%;}
 .form-container{color: #fff; border:0px solid #fff; padding:50px 60px; margin-top:20vh;
 -webkit-box-shadow: -4px 2px 29px 3px rgba(0,0,0,0.75);
 -moz-box-shadow: -4px 2px 29px 3px rgba(0,0,0,0.75);

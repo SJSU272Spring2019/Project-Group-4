@@ -16,8 +16,10 @@
           <div id ="CameraAccess">
           <video id="video" width="90%"></video>
           <canvas id="canvas" width="90%"></canvas>
-          <input class= "btn btn-xlg btn-success" type = "submit" value = "Submit Feedback" style="visibility:hidden;" onclick="add_review_to_db();">
-          <input class= "btn btn-xlg btn-primary" type = "submit" value = "Redo" style="visibility:hidden;" onclick= "redo();">
+          <div class="text-center">
+          <input id="fBSubmit" class= "btn btn-xlg btn-success" type = "submit" value = "Submit Feedback" style="visibility:hidden;" onclick="add_review_to_db();">
+          <input id="fBRedo" class= "btn btn-xlg btn-primary" type = "submit" value = "Redo" style="visibility:hidden;" onclick= "redo();">
+      </div>
       </div>
   </body>
 </html>

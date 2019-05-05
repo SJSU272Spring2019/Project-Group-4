@@ -47,35 +47,16 @@ function add_review_to_db() {
     }
   }
     if(veryunlikely || unlikely){
-    window.location.assign("./speechTotext.html");
+    window.location.assign("./ResultSuccess.html?bill_num=" + billnum);
   } else{
     database.collection("Feedback").doc(billnum).set({
       expressions: feedback
   }).then(function(docRef) {
         console.log("Document written with ID: ", billnum);
-        window.location.assign("./speechTotext.html");
+        window.location.assign("./ResultSuccess.html?bill_num=" + billnum);
     })
     }
   }
-
-/*function add_exp_to_db() {
-    
-   var urlParams = new URLSearchParams(location.search);
-    billnum = urlParams.get('bill_num');
-    
-
-    database.collection("Feedback").doc(billnum).set({
-      expressions: feedback
-  })
-    .then(function() {
-    window.location.assign("ResultSuccess.html?bill_num=" + billnum);
-  })
-    .catch(function(error) {
-        console.error("Error adding document: ", error);
-    });  */
-   
-
-
 
 
 function sendToSpeech() {
@@ -84,7 +65,7 @@ function sendToSpeech() {
   window.location.assign("speechTotext.html?bill_num=" + billnum);
 }
   
-/*function sendTodb(){
+function sendTodb(){
     var urlParams = new URLSearchParams(location.search);
     billnum = urlParams.get('bill_num');
     console.log(urlParams.get('bill_num'));
@@ -102,7 +83,7 @@ function sendToSpeech() {
          .catch(function(error) {
              console.error("Error writing document: ", error);
          });
-}*/
+}
 function billNumGet(){
   var billNumber= document.getElementById("userbill");
   console.log("billdfedf",billNumber.value);
@@ -156,10 +137,14 @@ function throwError(e){
 
 function snap() {
 	var video = document.getElementById('video');
+  var fBSubmit = document.getElementById('fBSubmit');
+  var fBRedo = document.getElementById('fBRedo');
 	canvas.width = video.clientWidth;
 	canvas.height = video.clientHeight;
 	var context = canvas.getContext('2d');
 	context.drawImage(video, 10, 5, 950, 700);
+  fBSubmit.style = "visibility:visible;";
+fBRedo.style = "visibility:visible;";
 	video.style = "visibility: hidden;width :0px; height:0px;";
   canvas.style="visibility:visible;";
 	imageUpload(canvas)
