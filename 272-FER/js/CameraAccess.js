@@ -159,9 +159,9 @@ function snap() {
 	canvas.width = video.clientWidth;
 	canvas.height = video.clientHeight;
 	var context = canvas.getContext('2d');
-	context.drawImage(video, 0, 0);
-	video.style = "visibility: hidden;";
-  canvas.style="visibility:visible; position: absolute; margin: -500px 0px 0px 250px;";
+	context.drawImage(video, 10, 5, 950, 700);
+	video.style = "visibility: hidden;width :0px; height:0px;";
+  canvas.style="visibility:visible;";
 	imageUpload(canvas)
 
 
@@ -171,7 +171,7 @@ function redo(){
 	var canvas = document.getElementById('canvas');
 	canvas.style="visibility: hidden;";
 	var video = document.getElementById('video');
-	video.style = "visibility:visible";
+	video.style = "visibility:visible; width: 90%; height: auto;";
 	setTimeout(function(){ snap();}, 2000);
 	
 }
