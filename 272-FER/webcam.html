@@ -11,18 +11,10 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
      <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-
   </head>
-  <body>
-    <div class="container bg">
-        <!-- class="container cam"  -->
-        <form  onsubmit="return false;" style="color:white">
-            Enter bill number<br><input id="userbill" type="text" style="color:black"/>
-            <input id="bill" type="submit" style="color:black" onclick="triggerCamera();"/>
-        </form>
-      <!-- <h4>Did you like the service?</h4> -->
-    <!-- onload="triggerCamera();" class="container bg"> -->
-      <div id ="CameraAccess">
+  <body onload="triggerCamera();">
+    <div class="container bg" >
+          <div id ="CameraAccess">
           <video id="video" width="1200" height="500"></video>
           <canvas id="canvas" width="200" height="100"></canvas>
           <input class= "btn btn-xlg btn-success" type = "submit" value = "Submit Feedback" onclick="add_exp_to_db();">

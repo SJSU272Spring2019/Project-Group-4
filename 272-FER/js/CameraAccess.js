@@ -24,15 +24,14 @@ config = {
 
 function add_exp_to_db() {
     
-    billnum = document.getElementById("userbill").value;
+   var urlParams = new URLSearchParams(location.search);
+    billnum = urlParams.get('bill_num');
     
 
     database.collection("Feedback").doc(billnum).set({
       expressions: feedback
   })
     .then(function() {
-    // console.log("doc succussfully written");
-    billnum = document.getElementById("userbill").value;
     window.location.assign("ResultSuccess.html?bill_num=" + billnum);
   })
     .catch(function(error) {
@@ -67,6 +66,11 @@ function sendTodb(){
          .catch(function(error) {
              console.error("Error writing document: ", error);
          });
+}
+function billNumGet(){
+  var billNumber= document.getElementById("userbill");
+  console.log("billdfedf",billNumber.value);
+  window.location.assign("webcam.html?bill_num="+billNumber.value);
 }
 
 
