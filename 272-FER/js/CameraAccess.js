@@ -160,7 +160,8 @@ function snap() {
 	canvas.height = video.clientHeight;
 	var context = canvas.getContext('2d');
 	context.drawImage(video, 0, 0);
-	video.style = "display:none";
+	video.style = "visibility: hidden;";
+  canvas.style="visibility:visible; position: absolute; margin: -500px 0px 0px 250px;";
 	imageUpload(canvas)
 
 
@@ -168,11 +169,11 @@ function snap() {
 
 function redo(){
 	var canvas = document.getElementById('canvas');
-	canvas.style="display:none";
+	canvas.style="visibility: hidden;";
 	var video = document.getElementById('video');
 	video.style = "visibility:visible";
 	setTimeout(function(){ snap();}, 2000);
-	canvas.style="visibility:visible";
+	
 }
 
 function speechTotext(){   
