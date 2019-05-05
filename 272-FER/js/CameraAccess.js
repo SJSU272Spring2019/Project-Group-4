@@ -21,8 +21,44 @@ config = {
   console.log(firebase);
   database = firebase.firestore(); 
 
+function add_review_to_db() {
+    var urlParams = new URLSearchParams(location.search);
+    billnum = urlParams.get('bill_num');
+  var joy = feedback["joy"];
+  var sorrow = feedback["sorrow"];
+  var anger = feedback["anger"];
+  var surprise = feedback["surprise"];
+  var unlikely = false;
+  var veryunlikely = false;
+  for(val in feedback){
+    if (feedback[val] == "VERY_UNLIKELY"){
+      veryunlikely = true;
+    } else {
+      veryunlikely = false;
+      break;
+    }
+  }
+  for(val in feedback){
+    if (feedback[val] == "UNLIKELY"){
+      unlikely = true;
+    } else {
+      unlikely = false;
+      break;
+    }
+  }
+    if(veryunlikely || unlikely){
+    window.location.assign("./speechTotext.html");
+  } else{
+    database.collection("Feedback").doc(billnum).set({
+      expressions: feedback
+  }).then(function(docRef) {
+        console.log("Document written with ID: ", billnum);
+        window.location.assign("./speechTotext.html");
+    })
+    }
+  }
 
-function add_exp_to_db() {
+/*function add_exp_to_db() {
     
    var urlParams = new URLSearchParams(location.search);
     billnum = urlParams.get('bill_num');
@@ -36,10 +72,10 @@ function add_exp_to_db() {
   })
     .catch(function(error) {
         console.error("Error adding document: ", error);
-    });  
+    });  */
    
 
-  }
+
 
 
 function sendToSpeech() {
@@ -48,7 +84,7 @@ function sendToSpeech() {
   window.location.assign("speechTotext.html?bill_num=" + billnum);
 }
   
-function sendTodb(){
+/*function sendTodb(){
     var urlParams = new URLSearchParams(location.search);
     billnum = urlParams.get('bill_num');
     console.log(urlParams.get('bill_num'));
@@ -66,7 +102,7 @@ function sendTodb(){
          .catch(function(error) {
              console.error("Error writing document: ", error);
          });
-}
+}*/
 function billNumGet(){
   var billNumber= document.getElementById("userbill");
   console.log("billdfedf",billNumber.value);
@@ -215,3 +251,4 @@ function imageUpload(canvas) {
       })
     }) 
 }
+
