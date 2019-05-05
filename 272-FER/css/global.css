@@ -9,3 +9,9 @@ box-shadow: -4px 2px 29px 3px rgba(0,0,0,0.75);}
 .jumbo-container{margin-top:35vh;}
 
 .cam{margin-top:10vh;}
+
+input.credFailed{border-color:red; border-width:1.5px;}
+
+input.credFailed:focus{border-color:red !important; border-width:1.5px;}
+
+div.credFailed{color:red;}
