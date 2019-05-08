@@ -12,20 +12,23 @@
      <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
  </head>
  <body class="container bg">
-    <script>
-        // var param = /[&?]path=([^&]+)/.exec(location.search);
-        // param = param ? param[1].replace(/"/g, '&quot;') : '';
+    
+    <div id ="CameraAccess">
+       <div id="ReviewScreen" class="jumbotron jumbo-container">
+        <h2>Thanks for your quick feedback!!
+        Would you like to tell us more?</h2>
+        <div class="text-center">
+        <input onclick="sendToSpeech();" class="btn btn-xlg btn-success" type = "submit" value = "Yes">
+        <input href="ResultFailure.html" class="btn btn-xlg btn-info" type = "button" value = "No">
+      </div>
+      </div>
+      <script>
         var urlParams = new URLSearchParams(location.search);
         param = urlParams.get('bill_num');
         console.log(urlParams.get('bill_num'));
         document.write('<object type="application/pdf" width="100%" height="100%">\n' +
             '<param id="billNum" name="billNum" value="' + param + '" />\n</object>');
       </script>
-    <div id ="CameraAccess">
-        <h2 style="color:white;">Thanks for your quick feedback!! </h2>
-        <h2 style="color:white;">Wold you like to tell us more about what specifically you liked/disliked?</h2>
-        <a onclick="sendToSpeech();"  class="button" style="color:white">Yes</a>
-        <a href="ResultFailure.html" class="button" style="color:white">No</a>
       </div>
   </body>
 </html>

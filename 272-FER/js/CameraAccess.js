@@ -78,7 +78,7 @@ function sendTodb(){
              text: val
         }, { merge: true })
          .then(function() {
-          window.location.assign("ResultFailure.html");
+          window.location.assign("ResultClose.html");
          })
          .catch(function(error) {
              console.error("Error writing document: ", error);
