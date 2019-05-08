@@ -9,6 +9,7 @@
         <link href="css/global.css" type="text/css" rel="stylesheet">
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+
     <script>
         var database;
         function configuredb(){
@@ -45,13 +46,13 @@
          
               <ul class="nav navbar-nav navbar-right">
                 <form action="./AdminLogin">
-              <!-- <h3> <li><a href="./pieChart.html"></a> Pie Chart</li></h3>-->
+               <h3> <li><a href="./Login.html">Log Out</a></li></h3>
            </form>
               </ul>
             </div>
           </div>
     </nav>
-    <div style="display: block;height: 500px;width: 500px;margin:auto;margin-top:100px">
+    <div style="display: block;height: 550px;width: 550px;margin:auto;margin-top:100px;padding-top: 20px;padding-left: 20px;padding-right: 20px;padding-bottom: 20px;background: azure;">
         <canvas id="pieChart" width="500" height="500" ></canvas>
     </div>
     <script>

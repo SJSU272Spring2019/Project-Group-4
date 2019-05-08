@@ -11,7 +11,7 @@ var config = {
   console.log(firebase);
   database = firebase.firestore(); 
 
-function validate(){
+function validate(usertype){
     var usernameEle = document.getElementById("username");
     var passwordEle = document.getElementById("password")
     var username = usernameEle.value;
@@ -38,11 +38,11 @@ function validate(){
       handleCredFailed(message1,divele1,passwordEle,errorClassName);
       //window.alert("Please enter password");
     } else {
-      validateInput(username,password,collectionName);
+      validateInput(username,password,collectionName,usertype);
     }
  }
 
- function validateInput(username, password, collectionName){
+ function validateInput(username, password, collectionName, usertype){
     var inputele,divele,message;
     var errorClassName = "credFailed";
     var docRef = database.collection(collectionName).doc(username);
@@ -52,7 +52,12 @@ function validate(){
       var data = doc.data();
       var userpwd = data.password;
       if(password == userpwd){
-        window.location.assign("./Review.html");
+        if(usertype == "admin"){
+          window.location.assign("./barChart.html");
+        } else {
+          window.location.assign("./Review.html");  
+        }
+        
       } else {
           message = "Incorrect password";
           divele = document.getElementById("passwordFailed");
