@@ -128,7 +128,7 @@ function cameraTrigger(){
 function streamWebCam (stream) {
 	video.srcObject = stream;
 	video.play();
-	setTimeout(function(){ snap();}, 2000);
+	setTimeout(function(){ snap();}, 4000);
 }
 
 function throwError(e){
