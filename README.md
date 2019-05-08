@@ -1,10 +1,8 @@
 # Project-Group-4
 
-TITLE : Customer review with the help of Facial expression recognition(FER)
+TITLE : Visual Audio feedback system
  
-ABSTRACT : People are always more likely to buy the product which has already been recommended by other users. This is how important are customer reviews. But no customer likes filling those lengthy questionnaires that most companies offer. Also, filling these questionnaires is time consuming. Taking customer review by FER system is easier and quicker.
-
-SUMMARY :  This project uses a Convolutional Neural Network model to design a Facial Expression recognition system. This system takes in customer images when asked about how he/she liked the service/product and analyses these inputs to find out how satisfied is the customer. For example a customer face may be 40% neutral and 60% happy. This would mean that the customer is 60% satisfied. 
+ABSTRACT : Customer reviews provide insights to improve a products, services and staff interactions. Especially, In most of the fast food chains such as Mc Donalds, Subway, KFC, Chipotle etc., people don’t have any particular customer review option, They buy their food and leave. One of the main reasons is time constraint, time is limited for the customer and also for the staff who works in the store. This application helps to get feedback of the product less than 10 seconds. All the customer has to do is entering his receipt number and giving his feedback in the form of his facial expressions, If the customer further wants to give more feedback he can opt for audio feedback. This feedback is stored in cloud and  The feedback collected will be shown in a graphical representation for the business purposes.
 
 REFERENCES:
 http://cs231n.stanford.edu/reports/2017/pdfs/224.pdf, http://cs231n.stanford.edu/reports/2016/pdfs/023_Report.pdf , https://www.tensorflow.org/tutorials/estimators/cnn , https://keras.io/getting-started/sequential-model-guide/
