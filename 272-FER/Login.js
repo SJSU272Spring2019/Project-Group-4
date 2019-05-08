@@ -53,7 +53,7 @@ function validate(usertype){
       var userpwd = data.password;
       if(password == userpwd){
         if(usertype == "admin"){
-          window.location.assign("./barChart.html");
+          window.location.assign("./barchart.html");
         } else {
           window.location.assign("./Review.html");  
         }
