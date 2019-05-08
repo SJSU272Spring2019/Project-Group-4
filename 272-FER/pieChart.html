@@ -45,14 +45,14 @@
          
               <ul class="nav navbar-nav navbar-right">
                 <form action="./AdminLogin">
-               <h3> <li><a href="./pieChart.html">Pie Chart</a></li></h3>
+              <!-- <h3> <li><a href="./pieChart.html"></a> Pie Chart</li></h3>-->
            </form>
               </ul>
             </div>
           </div>
     </nav>
     <div style="display: block;height: 500px;width: 500px;margin:auto;margin-top:100px">
-        <canvas id="barChart" width="500" height="500" ></canvas>
+        <canvas id="pieChart" width="500" height="500" ></canvas>
     </div>
     <script>
         
@@ -81,13 +81,13 @@
         };
         
         function generateGraph(expressionValues){
-            var ctx = document.getElementById('barChart');
+            var ctx = document.getElementById('pieChart');
            // configuredb();
            // var expressionValues = getValuesFromdb();
            Chart.defaults.global.defaultFontColor = 'black';
             console.log("expressionValues..."+JSON.stringify(expressionValues));
             var myChart = new Chart(ctx, {
-                type: 'bar',
+                type: 'pie',
                 data: {
                     labels: ['Joy', 'Sorrow', 'Anger', 'Surprise'],
                     datasets: [{
