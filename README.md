@@ -4,7 +4,7 @@ TITLE : Visual Audio feedback system
 
 Project Link: https://newferproject.appspot.com/Login.html
 
-Sample Login Credentials: 
+Sample Login:     
   Username:AKeerthi               
   Password:AKeerthi
 
